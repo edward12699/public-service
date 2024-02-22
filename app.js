@@ -7,7 +7,6 @@ const path = require('path');
 const conf = require('./config');
 
 app.get('/sts', (req, res) => {
-  console.log(conf);
   let policy;
   if (conf.PolicyFile) {
     policy = fs.readFileSync(path.resolve(__dirname, conf.PolicyFile)).toString('utf-8');
@@ -17,8 +16,6 @@ app.get('/sts', (req, res) => {
     accessKeyId: conf.AccessKeyId,
     accessKeySecret: conf.AccessKeySecret
   });
-  console.log(1)
-  console.log(conf.RoleArn)
   client
     .assumeRole(conf.RoleArn, policy, conf.TokenExpireTime)
     .then(result => {
