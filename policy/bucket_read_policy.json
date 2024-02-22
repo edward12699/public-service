@@ -1,0 +1,16 @@
+{
+  "Statement": [
+    {
+      "Action": [
+        "oss:GetObject",
+        "oss:ListObjects"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "acs:oss:*:*:$BUCKET_NAME/*",
+        "acs:oss:*:*:$BUCKET_NAME"
+      ]
+    }
+  ],
+  "Version": "1"
+}
